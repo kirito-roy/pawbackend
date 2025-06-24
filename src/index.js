@@ -74,6 +74,48 @@ app.get("api/echo", async c => {
 	}
 }
 );
+
+app.post("api/test", async c => {
+	try {
+		const { name, roll } = await c.req.json();
+		if (!name || !roll) {
+			return c.json({ error: "Missing 'name' or 'roll' value" }, 400);
+		}
+		c.env.SQL.prepare('SELECT * FROM student WHERE name = ? AND roll = ?')
+			.bind(name, roll)
+			.all()
+			.then(results => {
+				if (results.length === 0) {
+					return c.json({ error: "No data found" }, 404);
+				}
+				return c.json({ data: results[0] }, 200);
+			})
+			.catch(error => {
+				console.error('Error querying database:', error);
+				return c.json({ error: 'Internal Server Error', details: error.message }, 500);
+			});
+		// return c.json({ name: name, roll: roll }, 200);
+	} catch (error) {
+		console.error('Error processing request:', error.stack);
+		return c.json({ error: 'Internal Server Error', details: error.message }, 500);
+	}
+});
+app.get("api/test", async c => {
+	try {
+		// get all data from student table
+		const results = await c.env.SQL.prepare('SELECT * FROM student').all();
+		if (results.length === 0) {
+			return c.json({ error: "No data found" }, 404);
+		}
+		return c.json({ data: results }, 200);
+	} catch (error) {
+		console.error('Error processing request:', error.stack);
+		return c.json({ error: 'Internal Server Error', details: error.message }, 500);
+	}
+});
+
+
+
 app.post("api/admin/dataentry", async c => {
 	try {
 		const { authorization } = c.req.header();
