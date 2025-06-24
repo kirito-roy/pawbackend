@@ -4,27 +4,43 @@
  */ {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "pawbackend",
-  "main": "api/index.js",
+  "main": "src/index.js",
   "compatibility_flags": ["nodejs_compat"],
   "compatibility_date": "2025-04-01",
   "observability": {
     "enabled": true
   },
-  "assets": {
-    "binding": "ASSETS",
-    "not_found_handling": "single-page-application"
-  },
+  // "assets": {
+  //   "binding": "ASSETS",
+  //   "not_found_handling": "single-page-application"
+  // },
   // Hyperdrive binding is optional - if not provided, app will use mock data
   // To enable Hyperdrive, uncomment and configure properly:
-  /*
-    "hyperdrive": [
-      {
-        "binding": "HYPERDRIVE",
-        "id": "YOUR_HYPERDRIVE_ID",
-        "localConnectionString": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
-      }
-    ],
-    */
+  
+    "d1_databases": [
+    {
+      "binding": "DATABASE",
+      "database_id": "356653f7-e8aa-481a-8493-d8bdd93afd00",
+      "database_name": "api-wild-market-db"
+    }
+  ],
+  // "hyperdrive": [
+  //     {
+  //       "binding": "HYPERDRIVE",
+  //       "id": "YOUR_HYPERDRIVE_ID",
+  //       "localConnectionString": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
+  //     }
+  //   ],
+  "vars": {
+    "TWILIO_ACCOUNT_SID": "ACee2bc9466b600fc404fdc226df382b94",
+    "TWILIO_AUTH_TOKEN": "94f8bd28340503554887aa4479850cd2",
+    "TWILIO_SERVICE_SID": "VAa997cf41d52b840892a113af3ff26af4",
+    "SECRET_KEY": "sk_test_51J3",
+    "GOOGLE_CLIENT_ID": "1:153275426304:web:d423fd9e8e211b28b71ae5",
+    "GOOGLE_JWKS": "https://www.googleapis.com/oauth2/v3/certs",
+    "env" : "production",
+  },
+    
   "placement": {
     "mode": "smart"
   },

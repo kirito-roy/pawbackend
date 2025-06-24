@@ -1,0 +1,68 @@
+@api_host = https://petbackend.roy184433.workers.dev
+# @api_host = http://localhost:8787
+
+# @name testapiget
+GET {{api_host}}/api/hello
+Accept: application/json
+Content-Type: application/json
+
+{
+	"id": "1"
+}
+
+### next test
+# @name testapipost
+POST {{api_host}}/api/hello
+Accept: application/json
+Content-Type: application/json
+
+# Sample payload for POST request
+{
+  "name": "John Doe"
+}
+
+### user register
+# @name register
+POST {{api_host}}/api/user/login
+Accept: application/json
+Content-Type: application/json
+
+# Sample payload for POST request
+{
+  "id":"shruti","password":"Shruti@123","phoneNumber":"1234567890","email":"shruti@gmail.com"
+}
+
+### user login
+# @name login
+GET {{api_host}}/api/user/login
+Accept: application/json
+Content-Type: application/json
+
+# Sample payload for GET request
+{
+  "id":"shruti","password":"Shruti@123"
+}
+
+
+### user jwt post
+# @name userjwt
+POST  {{api_host}}/api/jwt
+Accept: application/json
+Content-Type: application/json
+
+# Sample payload for PUT request
+{
+  "id": "shruti",
+  "password": "Shruti@123"
+}
+
+
+### user jwt get
+# @name userjwt
+GET {{api_host}}/api/jwt
+Authorization: Bearer <jwt_token>
+Accept: application/json
+Content-Type: application/json
+{
+	"token": "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6InNocnV0aSIsInBhc3N3b3JkIjoiU2hydXRpQDEyMyIsImV4cCI6MTczNzk3NDE0OH0.cjT0-TsfIhIz0N6oIsSzCYE4SaIwzOxOPFAEuciE814"
+}
