@@ -32,9 +32,7 @@
   //     }
   //   ],
   "vars": {
-    "TWILIO_ACCOUNT_SID": "ACee2bc9466b600fc404fdc226df382b94",
-    "TWILIO_AUTH_TOKEN": "94f8bd28340503554887aa4479850cd2",
-    "TWILIO_SERVICE_SID": "VAa997cf41d52b840892a113af3ff26af4",
+    
     "SECRET_KEY": "sk_test_51J3",
     "GOOGLE_CLIENT_ID": "1:153275426304:web:d423fd9e8e211b28b71ae5",
     "GOOGLE_JWKS": "https://www.googleapis.com/oauth2/v3/certs",
